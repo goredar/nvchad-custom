@@ -25,41 +25,7 @@ M.treesitter = {
 }
 
 M.mason = {
-  ensure_installed = {
-    -- lua stuff
-    "lua-language-server",
-    "stylua",
-
-    -- web dev stuff
-    "css-lsp",
-    "html-lsp",
-    "typescript-language-server",
-    "deno",
-    "prettier",
-
-    -- c/cpp stuff
-    "clangd",
-    "clang-format",
-
-    -- Python
-    "pyright",
-
-    -- Goalng
-    "gopls",
-
-    -- Rust
-    "rustfmt",
-    "rust-analyzer",
-
-    -- JSON/YAML
-    "json-lsp",
-    "yaml-language-server",
-
-    -- Terraform
-    "terraform-ls",
-    "tflint",
-    "tfsec",
-  },
+  ensure_installed = {},
 }
 
 M.nvimtree = {

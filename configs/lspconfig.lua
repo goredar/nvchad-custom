@@ -44,7 +44,9 @@ local servers = {
   "gopls",
   "bashls",
   "terraformls",
-  "tflint",
+  "sqlls",
+  "dockerls",
+  "docker_compose_language_service",
 }
 
 for _, lsp in ipairs(servers) do

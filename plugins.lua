@@ -32,15 +32,12 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      { "williamboman/mason-lspconfig.nvim" },
       {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
+        "mfussenegger/nvim-lint",
+        event = { "BufReadPre", "BufNewFile" },
       },
-      {
-        "williamboman/mason-lspconfig.nvim",
-      },
+      { "rshkarin/mason-nvim-lint" },
     },
     config = function()
       require("mason").setup()
@@ -48,11 +45,31 @@ local plugins = {
 
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
+      require "custom.configs.lint"
+
+      -- require("mason-nvim-lint").setup()
+    end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    config = function()
+      require "custom.configs.conform"
     end,
   },
 
   {
     "williamboman/mason.nvim",
+    dependencies = {
+      {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        config = function()
+          require "custom.configs.mason-tool-installer"
+        end,
+        lazy = false,
+      },
+    },
     opts = overrides.mason,
   },
   --
@@ -147,7 +164,7 @@ local plugins = {
       require("toggleterm").setup {
         open_mapping = [[<c-X>]],
         -- direction = 'vertical' | 'horizontal' | 'tab' | 'float',
-        direction = "tab",
+        direction = "float",
       }
     end,
     lazy = false,
